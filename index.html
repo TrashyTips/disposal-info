@@ -39,6 +39,28 @@
       $('.main.menu  .ui.dropdown').dropdown({
         on: 'hover'
       });
+
+			// setup the searching+results
+			var valueNames = [
+				'listjs-title',
+				'listjs-tags'
+			];
+			var options = {
+			  valueNames: valueNames,
+				listClass: 'listjs-list',
+				searchClass: 'listjs-search',
+			};
+			var recycleList = new List('recycle-list', options);
+			$('.ui.accordion').accordion({
+				exclusive: false
+			});
+
+      // Search term extraction
+      // ex: http://trashy.tips/#/apples
+			var searchHash = decodeURI(window.location.hash.slice(2));
+      $('#input-search').val( searchHash );
+			recycleList.search(searchHash,valueNames);
+			recycleList.update();
     })
   ;
   </script>
@@ -8302,21 +8324,6 @@ Visit <a href="http://www.nyc.gov/html/stuffex/html/home/home.shtml" title="NYC 
     </div>
   </div>
 	-->
-
-	<script>
-		var options = {
-	    valueNames: [ 
-				'listjs-title',
-				'listjs-tags'
-			],
-			listClass: 'listjs-list',
-			searchClass: 'listjs-search',
-		};
-		var recycleList = new List('recycle-list', options);
-		$('.ui.accordion').accordion({
-			exclusive: false
-		});
-	</script>
 
 </body>
 
