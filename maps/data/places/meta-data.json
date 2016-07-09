@@ -1,0 +1,12 @@
+{
+	"entries": [
+		{
+			"name": "USAgain",
+			"url": "http://www.usagain.com/",
+			"long_desc_url": "/descriptions/usagain.html",
+			"short_desc": "USAgain (pronounced "use-again") is a for-profit company that collects unwanted textiles and resells them in the U.S. and abroad, effectively diverting millions of pounds of clothing from landfills, generating new revenue streams for U.S. businesses and non-profits, and fueling local economies in emerging countries.",
+			"locations_url": "/places/usagain.geojson",
+			"categories": "clothing,textiles,shoes"
+		}
+	]
+}
