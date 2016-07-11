@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	<title>Electronics</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+	<link rel="stylesheet" type="text/css" href="../libs/leaflet-awesome-markers/leaflet.awesome-markers.css" />
+	<link rel="stylesheet" type="text/css" href="../libs/beautify-marker/leaflet-beautify-marker-icon.css" />
+	<!--[if lte IE 8]><link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css" /><![endif]-->
+
+	<link rel="stylesheet" href="../libs/sidebar-v2/css/leaflet-sidebar.css" />
+	<link rel="stylesheet" href="../css/main.css" />
+</head>
+<body>
+	<div id="sidebar" class="sidebar collapsed">
+		<!-- Nav tabs -->
+		<div class="sidebar-tabs">
+			<ul role="tablist">
+				<li><a href="#home" id="btn-sidebar-home" role="tab"><i class="fa fa-bars"></i></a></li>
+				<!--
+				<li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+				<li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+				-->
+			</ul>
+
+			<ul role="tablist">
+				<!--<li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>-->
+				<li><a href="#help" role="tab"><i class="fa fa-question-circle"></i></a></li>
+			</ul>
+
+		</div>
+
+		<!-- Tab panes -->
+		<div class="sidebar-content">
+
+			<div class="sidebar-pane" id="home">
+				<h1 class="sidebar-header">
+					Location Info
+					<span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+				</h1>
+				<div id="provider-info-content"></div>
+				<!--
+				<p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
+				<p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				<p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+				-->
+			</div>
+
+			<!--
+			<div class="sidebar-pane" id="profile">
+				<h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			</div>
+
+			<div class="sidebar-pane" id="messages">
+				<h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			</div>
+
+			<div class="sidebar-pane" id="settings">
+				<h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+			</div>
+			-->
+		</div>
+	</div>
+
+	<div id="map" class="sidebar-map"></div>
+
+	<script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+	<script src="../libs/sidebar-v2/js/leaflet-sidebar.js"></script>
+	<script src="../libs/leaflet-awesome-markers/leaflet.awesome-markers.js"></script>
+	<script src="../libs/beautify-marker/leaflet-beautify-marker.js"></script>
+	<script src="../libs/beautify-marker/leaflet-beautify-marker-icon.js"></script>
+	<script src="../libs/jquery/jquery.min.js"></script>
+	<script src="../js/location-info.js"></script>
+	<script src="../js/setup.js"></script>
+	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+	<script type='text/javascript' src='../libs/leaflet-mcg-freezer/leaflet.markercluster.freezable-src.js'></script>
+
+	<script>
+
+		var map = L.map('map');
+		map.setView([-73.956504, 40.775856], 9);
+
+		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; OpenStreetMap contributors'
+		}).addTo(map);
+
+		var sidebar = L.control.sidebar('sidebar').addTo(map);
+
+		var places = L.markerClusterGroup();
+
+		function openSidebar(){
+			$('#btn-sidebar-home')[0].click();
+		}
+
+		var bestBuyIcon = L.AwesomeMarkers.icon({
+			icon: '',
+			prefix: 'fa',
+			markerColor: 'blue',
+			iconColor: '#FFFFFF'
+		});
+		var bestBuyIcon = L.BeautifyIcon.icon({
+			isAlphaNumericIcon: true,
+			text: 'BB',
+			//iconShape: 'marker',
+			backgroundColor: '#FFFF00',
+			borderColor: '#0000FF',
+			textColor: '#000000'
+		});
+
+		var staplesIcon = L.AwesomeMarkers.icon({
+			icon: '',
+			prefix: 'fa',
+			markerColor: 'red',
+			iconColor: '#FFFFFF'
+		});
+		var staplesIcon = L.BeautifyIcon.icon({
+			isAlphaNumericIcon: true,
+			text: 'S',
+			//iconShape: 'marker',
+			backgroundColor: '#FF0000',
+			borderColor: '#AA0000',
+			textColor: '#FFFFFF'
+		});
+
+		$.get('../data/descriptions/best-buy.html').then( function(response){
+			return loadPlaces({
+				url: '../data/places/best-buy-geo.json',
+				sidebarContent: response,
+				markerOptions: {
+					icon: bestBuyIcon
+				}
+			});
+		} ).then( function( geojson ){
+			geojson.addTo( places );
+			places.addTo( map );
+			map.setView([40.7553361,-73.9693638]);
+		} );
+
+		$.get('../data/descriptions/staples.html').then( function(response){
+			return loadPlaces({
+				url: '../data/places/staples-geo.json',
+				sidebarContent: response,
+				markerOptions: {
+					icon: staplesIcon
+				}
+			});
+		} ).then( function( geojson ){
+			geojson.addTo( places );
+			places.addTo( map );
+			map.setView([40.7553361,-73.9693638]);
+		} );
+
+		// To enable/disable clustering use: (TODO add button)
+		// places.enableClustering()
+		// places.disableClustering()
+
+	</script>
+</body>
+</html>
