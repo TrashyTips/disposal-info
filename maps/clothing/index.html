@@ -10,39 +10,12 @@
 	<link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
 	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
 	<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+	<link rel="stylesheet" type="text/css" href="../libs/leaflet-awesome-markers/leaflet.awesome-markers.css" />
+	<link rel="stylesheet" type="text/css" href="../libs/beautify-marker/leaflet-beautify-marker-icon.css" />
 	<!--[if lte IE 8]><link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css" /><![endif]-->
 
 	<link rel="stylesheet" href="../libs/sidebar-v2/css/leaflet-sidebar.css" />
-
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-		}
-
-		html, body, #map {
-			height: 100%;
-			font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
-		}
-
-		.lorem {
-			font-style: italic;
-			color: #AAA;
-		}
-
-		.address, .phone {
-			color: #AAA;
-		}
-		.address::before {
-			content: 'Address: ';
-			color: #000;
-		}
-		.phone::before {
-			content: 'Tel: ';
-			color: #000;
-		}
-
-	</style>
+	<link rel="stylesheet" href="../css/main.css" />
 </head>
 <body>
 	<div id="sidebar" class="sidebar collapsed">
@@ -56,11 +29,11 @@
 				-->
 			</ul>
 
-			<!--
 			<ul role="tablist">
-				<li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+				<!--<li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>-->
+				<li><a href="#help" role="tab"><i class="fa fa-question-circle"></i></a></li>
 			</ul>
-			-->
+
 		</div>
 
 		<!-- Tab panes -->
@@ -68,7 +41,7 @@
 
 			<div class="sidebar-pane" id="home">
 				<h1 class="sidebar-header">
-					Provider info
+					Location Info
 					<span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
 				</h1>
 				<div id="provider-info-content"></div>
@@ -101,13 +74,16 @@
 
 	<script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
 	<script src="../libs/sidebar-v2/js/leaflet-sidebar.js"></script>
+	<script src="../libs/leaflet-awesome-markers/leaflet.awesome-markers.js"></script>
+	<script src="../libs/beautify-marker/leaflet-beautify-marker.js"></script>
+	<script src="../libs/beautify-marker/leaflet-beautify-marker-icon.js"></script>
 	<script src="../libs/jquery/jquery.min.js"></script>
+	<script src="../js/location-info.js"></script>
+	<script src="../js/setup.js"></script>
 	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+	<script type='text/javascript' src='../libs/leaflet-mcg-freezer/leaflet.markercluster.freezable-src.js'></script>
 
 	<script>
-		// Additional place info
-		// social media links, maps urls, hours of operation (open/closed)
-		// phone number, items accepted, items not accepted, icon image
 
 		var map = L.map('map');
 		map.setView([-73.956504, 40.775856], 9);
@@ -121,72 +97,71 @@
 
 		var places = L.markerClusterGroup();
 
-		function setSidebarInfo( html ){
-			
-		}
-
 		function openSidebar(){
 			$('#btn-sidebar-home')[0].click();
 		}
 
-		function makePopupHtml(feature){
-			var parts = [];
-			parts.push( '<a href="javascript:openSidebar()"><h3>'+feature.properties.name+'</h3></a>' );
-			parts.push(				'<div class="address"><a href="https://www.google.com/maps/search/'+encodeURIComponent(feature.properties.address)+'">'+feature.properties.address+'</a></div>');
-			if( feature.properties.hasOwnProperty('phone') ){
-				parts.push('<div class="phone">'+feature.properties.phone+'</div>');
-			}
-			if( feature.properties.hasOwnProperty('telephone') ){
-				parts.push('<div class="phone">'+feature.properties.telephone+'</div>');
-			}
-			return parts.join('');
-			return [
-				'<a href="'+feature.properties.website+'">',
-				'<h3>'+feature.properties.name+'</h3>',
-				'</a>',
-				'<div class="address"><a href="https://www.google.com/maps/search/'+encodeURIComponent(feature.properties.address)+'">'+feature.properties.address+'</a></div>',
-				'<div class="phone">'+feature.properties.phone+'</div>'
-			].join('');
-		}
-
-		function loadPlaces( url, sidebarContent ){
-			return $.get(url).then( function(response){
-				geojson = L.geoJson( response, {
-					pointToLayer: function (feature, latlng) {
-						// TODO: popup info on click
-						return L.marker(latlng)
-							.bindPopup(makePopupHtml(feature))
-							.on('click',function(){
-								$('#provider-info-content').html( sidebarContent );
-								// TODO: custom location info on click, not just
-								// provider info (ie add store hours, address, phone
-								// name, etc...).
-								// The content does not get set if I open the sidebar
-								// but if dont open it, then the content does get set
-								// sidebar.open();
-								// That acutally seems to open something different.
-								// I manually trigger a click on the html input/link
-								// to simulate a user clicking to get the correct
-								// results.
-								// 
-								//setTimeout( function(){sidebar.open()}, 1000 );
-							});
-					}
-				});
-				geojson.addTo( places );
-				places.addTo( map );
-				map.setView(geojson.getBounds().getCenter());
-			});
-		}
-
 		$.get('../data/descriptions/usagain.html').then( function(response){
-			loadPlaces('../data/places/usagain-geo.json',response);
+			return loadPlaces({
+				url: '../data/places/usagain-geo.json',
+				sidebarContent: response,
+				markerOptions: {
+					icon: L.BeautifyIcon.icon({
+						isAlphaNumericIcon: true,
+						text: 'UA',
+						//iconShape: 'marker',
+						backgroundColor: '#6EB43F',
+						borderColor: '#000000',
+						textColor: '#FFFFFF'
+					})
+				}
+			});
+		} ).then( function( geojson ){
+			geojson.addTo( places );
+			places.addTo( map );
+			map.setView(geojson.getBounds().getCenter());
 		} );
+
 		$.get('../data/descriptions/salvation-army.html').then( function(response){
-			loadPlaces('../data/places/salvation-army-geo.json',response);
+			return loadPlaces({
+				url: '../data/places/salvation-army-geo.json',
+				sidebarContent: response,
+				markerOptions: {
+					icon: L.BeautifyIcon.icon({
+						isAlphaNumericIcon: true,
+						text: 'SA',
+						//iconShape: 'marker',
+						backgroundColor: '#FF0000',
+						borderColor: '#880000',
+						textColor: '#FFFFFF'
+					})
+				}
+			});
+		} ).then( function( geojson ){
+			geojson.addTo( places );
+			places.addTo( map );
+			map.setView(geojson.getBounds().getCenter());
 		} );
+
 		$.get('../data/descriptions/housing-works.html').then( function(response){
-			loadPlaces('../data/places/housing-works-geo.json',response);
+			return loadPlaces({
+				url: '../data/places/housing-works-geo.json',
+				sidebarContent: response,
+				markerOptions: {
+					icon: L.BeautifyIcon.icon({
+						isAlphaNumericIcon: true,
+						text: 'HW',
+						//iconShape: 'marker',
+						backgroundColor: '#222222',
+						borderColor: '#000000',
+						textColor: '#FFFFFF'
+					})
+				}
+			});
+		} ).then( function( geojson ){
+			geojson.addTo( places );
+			places.addTo( map );
+			map.setView(geojson.getBounds().getCenter());
 		} );
 
 	</script>
