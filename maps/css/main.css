@@ -26,3 +26,7 @@ html, body, #map {
 	text-decoration: none;
 	color: #000;
 }
+
+.accepts-list {
+	margin: 0;
+}

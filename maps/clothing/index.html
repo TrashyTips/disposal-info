@@ -104,6 +104,7 @@
 		$.get('../data/descriptions/usagain.html').then( function(response){
 			return loadPlaces({
 				url: '../data/places/usagain-geo.json',
+				locationType: 'Usagain',
 				sidebarContent: response,
 				markerOptions: {
 					icon: L.BeautifyIcon.icon({
@@ -125,6 +126,7 @@
 		$.get('../data/descriptions/salvation-army.html').then( function(response){
 			return loadPlaces({
 				url: '../data/places/salvation-army-geo.json',
+				locationType: 'SalvationArmy',
 				sidebarContent: response,
 				markerOptions: {
 					icon: L.BeautifyIcon.icon({
@@ -146,6 +148,7 @@
 		$.get('../data/descriptions/housing-works.html').then( function(response){
 			return loadPlaces({
 				url: '../data/places/housing-works-geo.json',
+				locationType: 'HousingWorks',
 				sidebarContent: response,
 				markerOptions: {
 					icon: L.BeautifyIcon.icon({

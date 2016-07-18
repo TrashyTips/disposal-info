@@ -31,6 +31,37 @@ def toGeoJsonWithLatLng( dictionaries ):
 		"features": geojson
 	}
 
+def appendLatLng( data, getAddress ):
+	d = data
+	try:
+		(lat, lng) = getLatLng( getAddress(d) )
+	except KeyError:
+		lat = ''
+		lng = ''
+		if ('lat' not in d) and ('lng' not in d):
+			raise
+	
+	# If the dictionary already has lat/lng, see that it agrees
+	if 'lat' in d:
+		if lat != '' and lat != d['lat']:
+			d['lat_geocode'] = lat
+	else:
+		d['lat'] = lat
+
+	if 'lng' in d:
+		if lng != '' and lng != d['lng']:
+			d['lng_geocode'] = lng
+	else:
+		d['lng'] = lng
+
+	return d
+
+def appendLatLngArray( dictionaries, getAddress ):
+	for d in dictionaries:
+		appendLatLng( d, getAddress )
+
+	return dictionaries
+
 def toGeoJson( dictionaries, getAddress ):
 	geojson = []
 	for l in dictionaries:

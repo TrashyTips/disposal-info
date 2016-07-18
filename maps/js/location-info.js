@@ -1,4 +1,4 @@
-function LocationInfo( rawGeoJson ){
+function LocationInfo( rawGeoJson, loadType ){
 	this.rawGeoJson = rawGeoJson;
 	var options = rawGeoJson.properties;
 
@@ -21,11 +21,15 @@ function LocationInfo( rawGeoJson ){
 	// BELOW can be done on the backend
 
 	// Normalize all of the data fields across various providers
+	LocationInfo['load'+loadType]( this, options );
+	/*
 	LocationInfo.loadHousingWorks( this, options );
 	LocationInfo.loadSalvationArmy( this, options );
 	LocationInfo.loadUsagain( this, options );
 	LocationInfo.loadBestBuy( this, options );
 	LocationInfo.loadStaples( this, options );
+	LocationInfo.loadCall2Recycle( this, options );
+	*/
 
 	// TODO Clean all of the data (ie format phone numbers)
 
@@ -49,7 +53,9 @@ LocationInfo.cleanPhoneNumber = function( phone ){
 }
 LocationInfo.loadHousingWorks = function( self, options ){
 	if( options.hasOwnProperty('address') ){ self.address = options.address; }
-	if( options.hasOwnProperty('hours') ){ self.hours = options.hours; }
+	if( options.hasOwnProperty('hours') ){
+		self.hours = options.hours.split(';');
+	}
 	if( options.hasOwnProperty('link') ){ self.link = options.link; }
 	if( options.hasOwnProperty('name') ){ self.title = options.name; }
 	if( options.hasOwnProperty('offerings') ){ self.offerings = options.offerings; }
@@ -71,7 +77,22 @@ LocationInfo.loadUsagain = function( self, options ){
 }
 LocationInfo.loadBestBuy = function( self, options ){
 	if( options.hasOwnProperty('address') ){ self.address = options.address; }
-	if( options.hasOwnProperty('hours') ){ self.hours = options.hours; }
+	try {
+		if( options.hasOwnProperty('hours') ){
+			self.hours = [
+				'Mon: '+options.hours.mon.opening+'-'+options.hours.mon.closing,
+				'Tue: '+options.hours.tue.opening+'-'+options.hours.tue.closing,
+				'Wed: '+options.hours.wed.opening+'-'+options.hours.wed.closing,
+				'Thu: '+options.hours.thu.opening+'-'+options.hours.thu.closing,
+				'Fri: '+options.hours.fri.opening+'-'+options.hours.fri.closing,
+				'Sat: '+options.hours.sat.opening+'-'+options.hours.sat.closing,
+				'Sun: '+options.hours.sun.opening+'-'+options.hours.sun.closing
+			];
+		}
+	}catch(e){
+		if( options.hasOwnProperty('hours') ){ console.info( options.hours ); }
+		self.hours = [];
+	}
 	if( options.hasOwnProperty('number') ){ self.link = 'http://stores.bestbuy.com/'+options.number; }
 	if( options.hasOwnProperty('name') ){ self.title = options.name; }
 	if( options.hasOwnProperty('phone') ){ self.phone = options.phone; }
@@ -79,8 +100,50 @@ LocationInfo.loadBestBuy = function( self, options ){
 }
 LocationInfo.loadStaples = function( self, options ){
 	if( options.hasOwnProperty('address') ){ self.address = options.address; }
-	if( options.hasOwnProperty('hours') ){ self.hours = options.hours; }
+	if( options.hasOwnProperty('hours') ){
+		try {
+			self.hours = [];
+			var tmpHours = options.hours.split(';');
+			for( var i=0, l=tmpHours.length; i<l; i+=1 ){
+				var cleanedLeft = tmpHours[i].replace(/^[,. ]+/,'');
+				var cleaned = cleanedLeft.replace(/[,. ]+$/,'');
+				if( cleaned.replace(/[,. ]+/g,'') !== '' ){
+					self.hours.push( cleaned );
+				}
+			}
+		}catch(e){
+			console.info( options.hours );
+			self.hours = [];
+		}
+	}
 	if( options.hasOwnProperty('name') ){ self.title = options.name; }
 	if( options.hasOwnProperty('phone') ){ self.phone = options.phone; }
+	return self;
+}
+LocationInfo.loadCall2Recycle = function( self, options ){
+	if( options.hasOwnProperty('address') ){ self.address = options.address; }
+	if( options.hasOwnProperty('hours') && options.hours && options.hours.split ){
+		self.hours = [];
+		var tmpHours = options.hours.split(';');
+		for( var i=0, l=tmpHours.length; i<l; i+=1 ){
+			var cleanedLeft = tmpHours[i].replace(/^[,. ]+/,'');
+			var cleaned = cleanedLeft.replace(/[,. ]+$/,'');
+			if( cleaned.replace(/[,. ]+/g,'') !== '' ){
+				self.hours.push( cleaned );
+			}
+		}
+	}
+	if( options.hasOwnProperty('name') ){ self.title = options.name; }
+	if( options.hasOwnProperty('phone') ){ self.phone = options.phone; }
+	if( options.hasOwnProperty('accepts') ){
+		var tmpAccepts = options.accepts.split(',');
+		for( var i=0, l=tmpAccepts.length; i<l; i+=1 ){
+			var cleanedLeft = tmpAccepts[i].replace(/^[,. ]+/,'');
+			var cleaned = cleanedLeft.replace(/[,. ]+$/,'');
+			if( cleaned.replace(/[,. ]+/g,'') !== '' ){
+				self.accepts.push( cleaned );
+			}
+		}
+	}
 	return self;
 }
