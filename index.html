@@ -73,6 +73,18 @@
 
 		ga('create', 'UA-80974195-1', 'auto');
 		ga('send', 'pageview');
+
+		$(function(){
+			$('a').on('click', function(event) {
+				ga('send', 'event', {
+					eventCategory: 'Outbound Link',
+					eventAction: 'click',
+					eventLabel: event.target.href,
+					transport: 'beacon'
+				});
+			});
+		});
+
 	</script>
 
   <style type="text/css">
