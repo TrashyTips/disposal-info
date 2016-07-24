@@ -15,6 +15,7 @@
 	<!--[if lte IE 8]><link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.ie.css" /><![endif]-->
 
 	<link rel="stylesheet" href="../libs/sidebar-v2/css/leaflet-sidebar.css" />
+	<link rel="stylesheet" href="../libs/leaflet-locatecontrol/L.Control.Locate.min.css" />
 	<link rel="stylesheet" href="../css/main.css" />
 
 	<script>
@@ -88,6 +89,7 @@
 	<script src="../libs/leaflet-awesome-markers/leaflet.awesome-markers.js"></script>
 	<script src="../libs/beautify-marker/leaflet-beautify-marker.js"></script>
 	<script src="../libs/beautify-marker/leaflet-beautify-marker-icon.js"></script>
+	<script src="../libs/leaflet-locatecontrol/L.Control.Locate.min.js"></script>
 	<script src="../libs/jquery/jquery.min.js"></script>
 	<script src="../js/location-info.js"></script>
 	<script src="../js/setup.js"></script>
@@ -105,7 +107,11 @@
 		}).addTo(map);
 
 		var sidebar = L.control.sidebar('sidebar').addTo(map);
-
+		var geoLocation = L.control.locate({
+			locateOptions: {
+				maxZoom: 12
+			}
+		}).addTo(map);
 		var places = L.markerClusterGroup();
 
 		function openSidebar(){
