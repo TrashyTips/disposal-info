@@ -16,6 +16,7 @@
 
 	<link rel="stylesheet" href="../libs/sidebar-v2/css/leaflet-sidebar.css" />
 	<link rel="stylesheet" href="../libs/leaflet-locatecontrol/L.Control.Locate.min.css" />
+	<link rel="stylesheet" href="../libs/leaflet-easy-button/easy-button.css" />
 	<link rel="stylesheet" href="../css/main.css" />
 
 	<script>
@@ -85,105 +86,22 @@
 	<div id="map" class="sidebar-map"></div>
 
 	<script src="//cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+	<script src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+	<script src='../libs/leaflet-mcg-freezer/leaflet.markercluster.freezable-src.js'></script>
 	<script src="../libs/sidebar-v2/js/leaflet-sidebar.js"></script>
 	<script src="../libs/leaflet-awesome-markers/leaflet.awesome-markers.js"></script>
 	<script src="../libs/beautify-marker/leaflet-beautify-marker.js"></script>
 	<script src="../libs/beautify-marker/leaflet-beautify-marker-icon.js"></script>
 	<script src="../libs/leaflet-locatecontrol/L.Control.Locate.min.js"></script>
+	<script src="../libs/leaflet-easy-button/easy-button.js"></script>
 	<script src="../libs/jquery/jquery.min.js"></script>
 	<script src="../js/location-info.js"></script>
 	<script src="../js/setup.js"></script>
-	<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
-	<script type='text/javascript' src='../libs/leaflet-mcg-freezer/leaflet.markercluster.freezable-src.js'></script>
+	<script src="../js/main.js"></script>
 
-	<script>
+	<script src="../js/load-usagain.js"></script>
+	<script src="../js/load-salvation-army.js"></script>
+	<script src="../js/load-housing-works.js"></script>
 
-		var map = L.map('map');
-		map.setView([-73.956504, 40.775856], 9);
-
-		L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; OpenStreetMap contributors'
-		}).addTo(map);
-
-		var sidebar = L.control.sidebar('sidebar').addTo(map);
-		var geoLocation = L.control.locate({
-			locateOptions: {
-				maxZoom: 12
-			}
-		}).addTo(map);
-		var places = L.markerClusterGroup();
-
-		function openSidebar(){
-			$('#btn-sidebar-home')[0].click();
-		}
-
-		$.get('../data/descriptions/usagain.html').then( function(response){
-			return loadPlaces({
-				url: '../data/places/usagain-geo.json',
-				locationType: 'Usagain',
-				sidebarContent: response,
-				markerOptions: {
-					icon: L.BeautifyIcon.icon({
-						isAlphaNumericIcon: true,
-						text: 'UA',
-						//iconShape: 'marker',
-						backgroundColor: '#6EB43F',
-						borderColor: '#000000',
-						textColor: '#FFFFFF'
-					})
-				}
-			});
-		} ).then( function( geojson ){
-			geojson.addTo( places );
-			places.addTo( map );
-			map.setView(geojson.getBounds().getCenter());
-		} );
-
-		$.get('../data/descriptions/salvation-army.html').then( function(response){
-			return loadPlaces({
-				url: '../data/places/salvation-army-geo.json',
-				locationType: 'SalvationArmy',
-				sidebarContent: response,
-				markerOptions: {
-					icon: L.BeautifyIcon.icon({
-						isAlphaNumericIcon: true,
-						text: 'SA',
-						//iconShape: 'marker',
-						backgroundColor: '#FF0000',
-						borderColor: '#880000',
-						textColor: '#FFFFFF'
-					})
-				}
-			});
-		} ).then( function( geojson ){
-			geojson.addTo( places );
-			places.addTo( map );
-			map.setView(geojson.getBounds().getCenter());
-		} );
-
-		$.get('../data/descriptions/housing-works.html').then( function(response){
-			return loadPlaces({
-				url: '../data/places/housing-works-geo.json',
-				locationType: 'HousingWorks',
-				sidebarContent: response,
-				markerOptions: {
-					icon: L.BeautifyIcon.icon({
-						isAlphaNumericIcon: true,
-						text: 'HW',
-						//iconShape: 'marker',
-						backgroundColor: '#222222',
-						borderColor: '#000000',
-						textColor: '#FFFFFF'
-					})
-				}
-			});
-		} ).then( function( geojson ){
-			geojson.addTo( places );
-			places.addTo( map );
-			map.setView(geojson.getBounds().getCenter());
-		} );
-
-	</script>
 </body>
 </html>
