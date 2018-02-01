@@ -1,0 +1,33 @@
+Housing works:
+	"address":"126 Crosby Street, New York, NY 10012",
+	"hours":" Mon\u2013Fri: 9 AM\u20139 PM, Sat\u2013Sun: 10 AM\u20135 PM",
+	"link":"http://www.housingworks.org/locations/detail/bookstore-cafe",
+	"name":"Bookstore Cafe",
+	"offerings":"housing works bookstore cafe has established itself as a new york downtown institution and tourist destination for the last decade. special events and a fully stocked cafe make this a great place to meet friends, relax and shop the best book, movie and music selection in new york city. our one of a kind space is available for rental and all of our merchandise is donated. we are staffed almost entirely by volunteers and 100% of our profits go to housing works.",
+	"telephone":"212-334-3324"
+Salvation Army:
+	"address":"30-11 61st Street , Woodside, NY 11377",
+	"id":"4720",
+	"lat":40.74559,
+	"lng":-73.903397,
+	"name":"Salvation Army Family Store",
+	"phone":"Call 1-800-SA-TRUCK",
+	"type":"2",
+	"url":"http://manhattan.satruck.org"
+Usagain:
+	"address":"120 Wisner St Newburgh, NY 12550",
+	"name":"Dvp Used Cars"
+BestBuy:
+	"address":"340 W Market Bloomington, MN  55425",
+	"hours":{...},
+	"name":"Best Buy Mall of America",
+	"number":"1000",
+	"phone":"(952) 853-1359"
+Staples:
+	"address":"409 Gateway Drive, Brooklyn, NY 11239",
+	"hours":null,
+	"id":"1257",
+	"lat":40.64558,
+	"lng":-73.87643,
+	"name":null,
+	"phone":"7183489477"

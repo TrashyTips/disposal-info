@@ -1,0 +1,203 @@
+{
+  "features":[
+    {
+      "geometry":{
+        "coordinates":[
+          -73.981909,
+          40.6748009
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"266 5th avenue, Brooklyn, NY 11215",
+        "hours":" Mon-Sat: 12pm-7pm PM, Sun: 11 AM-5 PM",
+        "link":"http://www.housingworks.org/locations/detail/park-slope-thrift-shop",
+        "name":"Park Slope Thrift Shop",
+        "offerings":"sign up to volunteer at the thrift shops or buy the bag",
+        "telephone":"718.636.2271"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.9888912,
+          40.763079
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"730-732 9th Avenue, New York, NY 10019",
+        "hours":" Mon-Sat: 11 AM-8 PM, Sun: 11 AM-6 PM",
+        "link":"http://www.housingworks.org/locations/detail/housing-works-thrift-shop-hells-kitchen",
+        "name":"Hell\u2019s Kitchen Thrift Shop",
+        "offerings":"sign up to volunteer at the thrift shops or buy the bag",
+        "telephone":"646-963-2665"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.9963908,
+          40.7247093
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"130 Crosby Street, New York, NY 10012",
+        "hours":" Mon-Sat: 11 AM-7 PM, Sun: 11 AM-5 PM",
+        "link":"http://www.housingworks.org/locations/detail/thrift-shops-soho",
+        "name":"Soho Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"646-786-1200"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.9496367,
+          40.7801544
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"1730 2nd Ave., New York, NY 10128",
+        "hours":" Mon-Fri: 11 AM- 7 PM, Sat: 10 AM-6 PM, Sun: 11AM - 5 PM",
+        "link":"http://www.housingworks.org/locations/detail/yorkville-thrift-shop",
+        "name":"Yorkville Thrift Shop (Second Avenue & 90th Street)",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"212-722-8306"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -74.00585939999999,
+          40.7338123
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"245 West 10th St., New York, NY 10014",
+        "hours":" Mon-Sat: 11 AM-7 PM, Sun: 11 AM-5 PM",
+        "link":"http://www.housingworks.org/locations/detail/west-village-thrift-shop",
+        "name":"West Village Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"212-352-1618"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.95794280000001,
+          40.7725869
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"202 East 77th St., New York, NY 10021",
+        "hours":" Mon-Fri: 11 AM- 7 PM, Sat: 10 AM-7 PM, Sun: 11 AM-6 PM",
+        "link":"http://www.housingworks.org/locations/detail/upper-east-thrift-shop",
+        "name":"Upper East Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"212-772-8461"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.97768289999999,
+          40.7789966
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"306 Columbus Ave., New York, NY 10023",
+        "hours":" Mon-Fri: 10 AM- 7 PM, Sat: 10 AM-7 PM, Sun: 11 AM-5 PM",
+        "link":"http://www.housingworks.org/locations/detail/upper-west-thrift-shop",
+        "name":"Columbus & 74th Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"212-579-7566"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.98355579999999,
+          40.7393015
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"157 East 23rd St., New York, NY 10010",
+        "hours":" Mon-Fri: 10 AM- 7 PM, Sat: 10 AM-6 PM, Sun: 12 PM-6 PM",
+        "link":"http://www.housingworks.org/locations/detail/gramercy-thrift-shop",
+        "name":"Gramercy Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"212-529-5955"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.9971456,
+          40.74024800000001
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"143 West 17th St., New York, NY 10011",
+        "hours":" Mon-Fri: 10 AM-7 PM, Sat:10AM - 7PM, Sun: 12 - 6pm",
+        "link":"http://www.housingworks.org/locations/detail/chelsea-thrift-shop",
+        "name":"Chelsea Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"718-838-5050"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.99657549999999,
+          40.7246035
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"126 Crosby Street, New York, NY 10012",
+        "hours":" Mon\u2013Fri: 9 AM\u20139 PM, Sat\u2013Sun: 10 AM\u20135 PM",
+        "link":"http://www.housingworks.org/locations/detail/bookstore-cafe",
+        "name":"Bookstore Cafe",
+        "offerings":"housing works bookstore cafe has established itself as a new york downtown institution and tourist destination for the last decade. special events and a fully stocked cafe make this a great place to meet friends, relax and shop the best book, movie and music selection in new york city. our one of a kind space is available for rental and all of our merchandise is donated. we are staffed almost entirely by volunteers and 100% of our profits go to housing works.",
+        "telephone":"212-334-3324"
+      },
+      "type":"Feature"
+    },
+    {
+      "geometry":{
+        "coordinates":[
+          -73.9946179,
+          40.6946468
+        ],
+        "type":"Point"
+      },
+      "properties":{
+        "address":"122 Montague Street, Brooklyn, New York 11201 ",
+        "hours":" Mon-Sat: 11 AM-7 PM, Sun: 11 AM-5 PM",
+        "link":"http://www.housingworks.org/locations/detail/brooklyn-thrift-shop",
+        "name":"Brooklyn Heights Thrift Shop",
+        "offerings":"shop, donate, and volunteer",
+        "telephone":"718-237-0521"
+      },
+      "type":"Feature"
+    }
+  ],
+  "type":"FeatureCollection"
+}

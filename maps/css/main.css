@@ -1,0 +1,32 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+html, body, #map {
+	height: 100%;
+	font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.lorem {
+	font-style: italic;
+	color: #AAA;
+}
+
+.address, .phone {
+	color: #AAA;
+}
+.address::before {
+	content: 'Address: ';
+	text-decoration: none;
+	color: #000;
+}
+.phone::before {
+	content: 'Tel: ';
+	text-decoration: none;
+	color: #000;
+}
+
+.accepts-list {
+	margin: 0;
+}
