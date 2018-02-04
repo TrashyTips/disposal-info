@@ -57,7 +57,10 @@ function makeSidebarContent( feature, providerInfo ){
 function loadPlaces( options ){
 	// url, sidebarContent
 	var defer = $.Deferred();
-	$.get(options.url).then( function(response){
+	$.ajax({
+		url: options.url,
+		dataType: 'json'
+	}).then( function(response){
 		var geojson = L.geoJson( response, {
 			pointToLayer: function (feature, latlng) {
 				var location = new LocationInfo( feature, options.locationType );
